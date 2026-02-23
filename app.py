@@ -6,6 +6,8 @@ from conf.config import DISCORD_TOKEN
 # ── Cogs laden ────────────────────────────────────────────────
 bot.load_extension("module.ticket")
 bot.load_extension("module.welcome")
+bot.load_extension("module.rules")
+bot.load_extension("module.role_request")
 
 
 @bot.slash_command(name="ping", description="Check the bot's latency")

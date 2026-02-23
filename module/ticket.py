@@ -4,6 +4,8 @@ from nextcord import Interaction
 
 import conf.config as cfg
 from views.ticket_view import TicketCreateView
+from conf.permission import _is_chief_of_justice
+
 
 
 class TicketCog(commands.Cog):
@@ -36,8 +38,14 @@ class TicketCog(commands.Cog):
         return embed
 
     # ── Slash Command ─────────────────────────────────────────
-    @nextcord.slash_command(name="ticket-panel", description="Sendet oder aktualisiert das Ticket Panel")
+    @nextcord.slash_command(name="ticket-panel", description="[Chief of Justice] Sendet oder aktualisiert das Ticket Panel")
     async def ticket_panel(self, interaction: Interaction):
+        if not _is_chief_of_justice(interaction):
+            await interaction.response.send_message(
+                "❌ Nur der **Chief of Justice** kann diesen Befehl nutzen.", ephemeral=True
+            )
+            return
+
         channel = self.bot.get_channel(cfg.CHANNEL_ID)
         embed   = self._build_panel_embed()
 
