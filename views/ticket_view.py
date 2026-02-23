@@ -1,7 +1,7 @@
 import nextcord
 from nextcord import ui, Interaction
 
-from conf.config import ROLE_ID, TICKET_CATEGORIES
+from conf.config import TICKET_CATEGORIES, JUDGE_ROLE_ID, PROSECUTOR_ROLE_ID, CHIEF_OF_JUSTICE_ROLE_ID, ATTORNEY_ROLE_ID
 
 
 # ─────────────────────────────────────────────
@@ -48,18 +48,25 @@ class TicketCategorySelect(ui.Select):
             return
 
         # Permissions
-        support_role  = guild.get_role(ROLE_ID)
+        support_roles  = [
+            guild.get_role(JUDGE_ROLE_ID),
+            guild.get_role(PROSECUTOR_ROLE_ID),
+            guild.get_role(CHIEF_OF_JUSTICE_ROLE_ID),
+            guild.get_role(ATTORNEY_ROLE_ID)
+        ]
         category_role = guild.get_role(category["role_id"])
         overwrites = {
             guild.default_role: nextcord.PermissionOverwrite(view_channel=False),
             user: nextcord.PermissionOverwrite(
                 view_channel=True, send_messages=True, read_message_history=True
             ),
-            support_role: nextcord.PermissionOverwrite(
-                view_channel=True, send_messages=True, read_message_history=True
-            ),
         }
-        if category_role and category_role != support_role:
+        for support_role in support_roles:
+            if support_role:
+                overwrites[support_role] = nextcord.PermissionOverwrite(
+                    view_channel=True, send_messages=True, read_message_history=True
+                )
+        if category_role and category_role not in support_roles:
             overwrites[category_role] = nextcord.PermissionOverwrite(
                 view_channel=True, send_messages=True, read_message_history=True
             )

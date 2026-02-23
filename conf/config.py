@@ -7,13 +7,13 @@ load_dotenv()
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 GUILD_ID       = int(os.getenv("GUILD_ID"))
-ROLE_ID        = int(os.getenv("ROLE_IDS"))
+ROLE_ID        = int(os.getenv("ROLE_ID"))
 CHANNEL_ID     = int(os.getenv("CHANNEL_ID"))
 
-CHIEF_OF_JUSTICE_ROLE_ID = int(os.getenv("TICKET_ROLE_GENERAL",  os.getenv("CHIEF_ROLE_ID")))
-PROSECUTOR_ROLE_ID       = int(os.getenv("TICKET_ROLE_APPLY",    os.getenv("PROSECUTOR_ROLE_ID")))
-JUDGE_ROLE_ID            = int(os.getenv("TICKET_ROLE_REPORT",   os.getenv("JUDGE_ROLE_ID")))
-ATTORNEY_ROLE_ID         = int(os.getenv("TICKET_ROLE_OTHER",    os.getenv("ATTORNEY_ROLE_ID")))
+CHIEF_OF_JUSTICE_ROLE_ID = int(os.getenv("CHIEF_ROLE_ID"))
+PROSECUTOR_ROLE_ID       = int(os.getenv("PROSECUTOR_ROLE_ID"))
+JUDGE_ROLE_ID            = int(os.getenv("JUDGE_ROLE_ID"))
+ATTORNEY_ROLE_ID         = int(os.getenv("ATTORNEY_ROLE_ID"))
 
 # ── Ticket Panel ──────────────────────────────────────────────
 # ID der gespeicherten Panel-Nachricht (wird vom Bot gesetzt, nicht manuell)
@@ -29,28 +29,28 @@ TICKET_CATEGORIES = [
         "label":       "Chief of Justice",
         "emoji":       "🛠️",
         "description": "An den Chief of Justice",
-        "role_id":     int(os.getenv("TICKET_ROLE_GENERAL",  os.getenv("CHIEF_ROLE_ID"))),
+        "role_id":     CHIEF_OF_JUSTICE_ROLE_ID,
         "value":       "general",
     },
     {
         "label":       "Staatsanwaltschaft",
         "emoji":       "📋",
         "description": "An die Staatsanwaltschaft wenden",
-        "role_id":     int(os.getenv("TICKET_ROLE_APPLY",    os.getenv("PROSECUTOR_ROLE_ID"))),
+        "role_id":     PROSECUTOR_ROLE_ID,
         "value":       "apply",
     },
     {
         "label":       "Richter",
         "emoji":       "🚨",
         "description": "An die Richter wenden",
-        "role_id":     int(os.getenv("TICKET_ROLE_REPORT",   os.getenv("JUDGE_ROLE_ID"))),
+        "role_id":     JUDGE_ROLE_ID,
         "value":       "report",
     },
     {
         "label":       "Rechtsanwalt",
         "emoji":       "💬",
         "description": "An einen Rechtsanwalt wenden",
-        "role_id":     int(os.getenv("TICKET_ROLE_OTHER",    os.getenv("LAWYER_ROLE_ID"))),
+        "role_id":     ATTORNEY_ROLE_ID,
         "value":       "other",
     },
 ]
