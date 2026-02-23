@@ -11,9 +11,16 @@ ROLE_ID        = int(os.getenv("ROLE_ID"))
 CHANNEL_ID     = int(os.getenv("CHANNEL_ID"))
 
 CHIEF_OF_JUSTICE_ROLE_ID = int(os.getenv("CHIEF_ROLE_ID"))
+DEPUTY_CHIEF_OF_JUSTICE_ROLE_ID = int(os.getenv("DEPUTY_CHIEF_ROLE_ID"))
+SENIOR_JUDGE_ROLE_ID = int(os.getenv("SENIOR_JUDGE_ROLE_ID"))
+SENIOR_ATTORNEY_ROLE_ID = int(os.getenv("SENIOR_ATTORNEY_ROLE_ID"))
 PROSECUTOR_ROLE_ID       = int(os.getenv("PROSECUTOR_ROLE_ID"))
 JUDGE_ROLE_ID            = int(os.getenv("JUDGE_ROLE_ID"))
 ATTORNEY_ROLE_ID         = int(os.getenv("ATTORNEY_ROLE_ID"))
+
+SENIOR_JUDGE_ROLE_ID = int(os.getenv("SENIOR_JUDGE_ROLE_ID"))
+ATTORNEY_GENERAL_ROLE_ID = int(os.getenv("ATTORNEY_GENERAL_ROLE_ID"))
+
 
 # ── Ticket Panel ──────────────────────────────────────────────
 # ID der gespeicherten Panel-Nachricht (wird vom Bot gesetzt, nicht manuell)
@@ -33,11 +40,18 @@ TICKET_CATEGORIES = [
         "value":       "Zum Chief of Justice",
     },
     {
-        "label":       "Staatsanwaltschaft",
-        "emoji":       "📋",
-        "description": "An die Staatsanwaltschaft wenden",
-        "role_id":     PROSECUTOR_ROLE_ID,
-        "value":       "Zur Staatsanwaltschaft",
+        "label":       "Deputy Chief of Justice",
+        "emoji":       "🛡️",
+        "description": "An den Deputy Chief of Justice wenden",
+        "role_id":     DEPUTY_CHIEF_OF_JUSTICE_ROLE_ID,
+        "value":       "Zum Deputy Chief of Justice",
+    },
+    {
+        "label":       "Senior Judge",
+        "emoji":       "⚖️",
+        "description": "An den Senior Judge wenden",
+        "role_id":     SENIOR_JUDGE_ROLE_ID,
+        "value":       "Zum Senior Judge",
     },
     {
         "label":       "Richter",
@@ -47,12 +61,33 @@ TICKET_CATEGORIES = [
         "value":       "Zum Richter",
     },
     {
-        "label":       "Rechtsanwalt",
-        "emoji":       "💬",
-        "description": "An einen Rechtsanwalt wenden",
-        "role_id":     ATTORNEY_ROLE_ID,
-        "value":       "Zum Rechtsanwalt",
+        "label":       "Attorney General",
+        "emoji":       "💼",
+        "description": "An den Attorney General wenden",
+        "role_id":     ATTORNEY_GENERAL_ROLE_ID,
+        "value":       "Zum Attorney General",
     },
+    {
+        "label":       "Prosecutor",
+        "emoji":       "📋",
+        "description": "An die Staatsanwälte wenden",
+        "role_id":     PROSECUTOR_ROLE_ID,
+        "value":       "Zum Staatsanwalt",
+    },
+    {
+        "label":       "Senior Attorney",
+        "emoji":       "📁",
+        "description": "An die Senior Attorneys wenden",
+        "role_id":     SENIOR_ATTORNEY_ROLE_ID,
+        "value":       "Zum Senior Attorney",
+    },
+    {
+        "label":       "Attorney",
+        "emoji":       "💼",
+        "description": "An die Attorneys wenden",
+        "role_id":     ATTORNEY_ROLE_ID,
+        "value":       "Zum Attorney",
+    }
 ]
 
 # ── Rules ────────────────────────────────────────────────────
@@ -74,6 +109,12 @@ ROLE_DESCRIPTIONS = [
         "emoji":       "⚖️",
         "label":       "Chief of Justice",
         "description": "Leitet das gesamte Justizwesen. Höchste Instanz des Servers.",
+    },
+    {
+        "role_id":     DEPUTY_CHIEF_OF_JUSTICE_ROLE_ID,
+        "emoji":       "🛡️",
+        "label":       "Deputy Chief of Justice",
+        "description": "Unterstützt den Chief of Justice und übernimmt Aufgaben in dessen Abwesenheit.",
     },
     {
         "role_id":     PROSECUTOR_ROLE_ID,
